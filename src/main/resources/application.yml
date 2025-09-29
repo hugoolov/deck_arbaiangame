@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: deck-service   # This is the service name in Consul
+  cloud:
+    consul:
+      host: consul       # container name or "localhost" if running outside Docker
+      port: 8500
+      discovery:
+        register: true
+        prefer-ip-address: true
+        health-check-path: /actuator/health
+        health-check-interval: 10s
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
